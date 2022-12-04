@@ -3,17 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSandbox", "MauiSandbox\MauiSandbox.csproj", "{D1FE57F9-BEAE-464F-9969-AE4EE6601246}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{20902E19-E697-40FA-91A1-9B30B13153A8}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 		Settings.XamlStyler = Settings.XamlStyler
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSandbox.Net6", "MauiSandbox\MauiSandbox.Net6.csproj", "{D1FE57F9-BEAE-464F-9969-AE4EE6601246}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSandbox.Net7", "MauiSandbox\MauiSandbox.Net7.csproj", "{8057EC3D-74F9-49C0-8264-BE88555EA6FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +30,12 @@ Global
 		{D1FE57F9-BEAE-464F-9969-AE4EE6601246}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1FE57F9-BEAE-464F-9969-AE4EE6601246}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D1FE57F9-BEAE-464F-9969-AE4EE6601246}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8057EC3D-74F9-49C0-8264-BE88555EA6FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8057EC3D-74F9-49C0-8264-BE88555EA6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8057EC3D-74F9-49C0-8264-BE88555EA6FF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8057EC3D-74F9-49C0-8264-BE88555EA6FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8057EC3D-74F9-49C0-8264-BE88555EA6FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8057EC3D-74F9-49C0-8264-BE88555EA6FF}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
