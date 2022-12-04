@@ -1,0 +1,40 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ ((startsWith(matrix.os, 'android') || startsWith(matrix.os, 'windows')) && 'windows-latest') || 'macos-12' }}
+    if: >
+      github.event_name == 'push' ||
+      github.event.pull_request.head.repo.full_name != github.repository
+    strategy:
+      fail-fast: false
+      matrix:
+        configuration: [Debug]
+        dotnet-version: [6, 7]
+        os: [android, ios, maccatalyst, windows10.0.19041.0]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Latest .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Setup Xcode
+        if: matrix.os == 'ios' || matrix.os == 'maccatalyst'
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 14
+
+      - name: Restore Workload
+        run: dotnet workload restore
+
+      - name: Build
+        run: >
+          dotnet build MauiSandbox/MauiSandbox.Net${{ matrix.dotnet-version }}.csproj
+          -c ${{ matrix.configuration }}
+          -f net${{ matrix.dotnet-version }}.0-${{ matrix.os }}
