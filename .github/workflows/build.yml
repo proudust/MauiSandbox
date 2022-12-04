@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ${{ (startsWith(matrix.os, 'android') && 'ubuntu-latest') || (startsWith(matrix.os, 'windows') && 'windows-latest') || 'macos-12' }}
+    runs-on: ${{ matrix.os }}
     if: >
       github.event_name == 'push' ||
       github.event.pull_request.head.repo.full_name != github.repository
@@ -12,8 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         configuration: [Debug]
-        dotnet-version: [6, 7]
-        os: [android, ios, maccatalyst, windows10.0.19041.0]
+        runs-on: [ubuntu-latest, macos-12, windows-latest]
 
     steps:
       - name: Checkout
@@ -28,7 +27,4 @@ jobs:
         run: dotnet workload restore
 
       - name: Build
-        run: >
-          dotnet build MauiSandbox/MauiSandbox.Net${{ matrix.dotnet-version }}.csproj
-          -c ${{ matrix.configuration }}
-          -f net${{ matrix.dotnet-version }}.0-${{ matrix.os }}
+        run: dotnet build -c ${{ matrix.configuration }}
