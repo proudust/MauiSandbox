@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ${{ ((startsWith(matrix.os, 'android') || startsWith(matrix.os, 'windows')) && 'windows-latest') || 'macos-12' }}
+    runs-on: ${{ (startsWith(matrix.os, 'android') && 'ubuntu-latest') || (startsWith(matrix.os, 'windows') && 'windows-latest') || 'macos-12' }}
     if: >
       github.event_name == 'push' ||
       github.event.pull_request.head.repo.full_name != github.repository
