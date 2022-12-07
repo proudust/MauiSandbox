@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ${{ (startsWith(matrix.os, 'android') && 'ubuntu-latest') || (startsWith(matrix.os, 'windows') && 'windows-latest') || 'macos-12' }}
+    runs-on: ${{ (startsWith(matrix.os, 'android') && 'ubuntu-latest') || 'windows-latest' }}
     if: >
       github.event_name == 'push' ||
       github.event.pull_request.head.repo.full_name != github.repository
@@ -19,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Latest .NET
+      - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
