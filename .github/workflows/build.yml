@@ -24,9 +24,6 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
 
-      - name: Restore Workload
-        run: dotnet workload restore
-
       - name: Build
         run: >
           dotnet build MauiSandbox/MauiSandbox.Net${{ matrix.dotnet-version }}.csproj
